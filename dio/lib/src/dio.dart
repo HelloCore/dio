@@ -866,7 +866,7 @@ abstract class DioMixin implements Dio {
         if (err is! Response) {
           var _e = await errInterceptor(assureDioError(err, requestOptions));
           if (_e is! Response) {
-            throw assureDioError(_e ?? err, requestOptions);
+            return () async {}().then((value) => throw assureDioError(_e ?? err, requestOptions));
           }
           err = _e;
         }
