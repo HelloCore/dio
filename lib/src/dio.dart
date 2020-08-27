@@ -960,7 +960,7 @@ abstract class DioMixin implements Dio {
         );
       }
     } catch (e) {
-      throw assureDioError(e, options);
+      return () async {}().then((value) => throw assureDioError(e, options));
     }
   }
 
